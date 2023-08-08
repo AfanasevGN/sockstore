@@ -6,9 +6,6 @@ import pages.CartPage;
 import pages.CataloguePage;
 import pages.MainPage;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 public class SockTest extends BaseTest {
 
   @Test
@@ -22,8 +19,9 @@ public class SockTest extends BaseTest {
       cataloguePage.goToCart.click();
     CartPage cartPage = new CartPage(page);
     page.waitForLoadState();
-    Assert.assertEquals(cartPage.getBasketTotal(), cartPage.getOrderTotal());
-
+    cartPage.getBasketTotal();
+    cartPage.getOrderTotal();
+    Assert.assertEquals(cartPage.basketValue(), cartPage.orderValue());
   }
-
 }
+

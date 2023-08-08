@@ -2,7 +2,6 @@ package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import org.testng.mustache.Value;
 
 public class CartPage {
   protected final Page page;
@@ -11,17 +10,24 @@ public class CartPage {
 
   public CartPage(Page page) {
     this.page = page;
-    this.basketTotal = page.locator("#cartTotal");
-    this.orderTotal = page.locator("#orderSubtotal");
+    page.waitForLoadState();
+    this.basketTotal = page.locator("th#cartTotal");
+    this.orderTotal = page.locator("th#orderSubtotal");
   }
 
-  public String getBasketTotal(){
+  public String basketValue() {
     return basketTotal.innerText();
-
   }
 
-  public String getOrderTotal(){
+  public String orderValue() {
     return orderTotal.innerText();
   }
 
+  public void getBasketTotal() {
+    System.out.println(basketValue());
+  }
+  public void getOrderTotal() {
+    System.out.println(orderValue());
+  }
 }
+

@@ -13,8 +13,6 @@ public class CataloguePage {
     this.page = page;
     this.addToCartButtons = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Add to cart"));
     this.goToCart = page.locator("xpath=//span[@id='numItemsInCart']");
-
-
   }
 
   public void addToCart(int index) {
@@ -25,9 +23,4 @@ public class CataloguePage {
     page.locator("//a[text()='" + positionName + "']/ancestor::div[@class='product']/descendant::a[text()='Add to cart']").click();
   }
 
-
-
-
-
-  //нужен метод, который добавит любой товар по индексу или имени
 }
